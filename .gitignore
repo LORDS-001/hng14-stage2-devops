@@ -1,0 +1,20 @@
+# Environment files - never commit these
+.env
+*.env
+api/.env
+worker/.env
+
+# Node modules
+node_modules/
+frontend/node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
