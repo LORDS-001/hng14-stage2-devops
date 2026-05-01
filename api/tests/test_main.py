@@ -1,17 +1,15 @@
-import pytest
-from fastapi.testclient import TestClient
+﻿import pytest
 from unittest.mock import MagicMock, patch
-import sys
-import os
-
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Mock redis before importing app
-with patch('redis.Redis') as mock_redis:
-    mock_redis_instance = MagicMock()
-    mock_redis.return_value = mock_redis_instance
+mock_redis_instance = MagicMock()
+
+
+with patch('redis.Redis', return_value=mock_redis_instance):
+    from fastapi.testclient import TestClient
     from main import app
+
 
 client = TestClient(app)
 
