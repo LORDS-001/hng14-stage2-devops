@@ -1,5 +1,5 @@
 ﻿# Stage 1 - Builder
-FROM python:3.11-slim AS builder
+FROM python:3.11-alpine AS builder
 
 WORKDIR /app
 
@@ -7,9 +7,9 @@ COPY requirements.txt .
 RUN pip install --upgrade pip && pip install --prefix=/install -r requirements.txt
 
 # Stage 2 - Final image
-FROM python:3.11-slim
+FROM python:3.11-alpine
 
-RUN useradd --create-home --shell /bin/bash appuser
+RUN adduser -D -s /bin/sh appuser
 
 WORKDIR /app
 

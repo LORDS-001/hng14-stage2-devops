@@ -1,5 +1,5 @@
 ﻿# Stage 1 - Builder
-FROM node:18-slim AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -8,9 +8,9 @@ COPY package*.json ./
 RUN npm install
 
 # Stage 2 - Final image
-FROM node:18-slim
+FROM node:18-alpine
 
-RUN useradd --create-home --shell /bin/bash appuser
+RUN adduser -D -s /bin/sh appuser
 
 WORKDIR /app
 
