@@ -252,7 +252,7 @@ jobs:
           username: hngdevops
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/hngdevops/hng14-stage2-devops
+            cd /home/hngdevops/microservices-pipeline
             git pull origin main
             echo "REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}" > .env
             echo "APP_ENV=production" >> .env
