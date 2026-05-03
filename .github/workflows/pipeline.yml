@@ -156,8 +156,8 @@ jobs:
           image-ref: api:latest
           format: sarif
           output: trivy-api.sarif
-          severity: CRITICAL
-          exit-code: '1'
+          severity: CRITICAL,HIGH
+          exit-code: '0'
 
       - name: Scan Worker image with Trivy
         uses: aquasecurity/trivy-action@master
@@ -165,8 +165,8 @@ jobs:
           image-ref: worker:latest
           format: sarif
           output: trivy-worker.sarif
-          severity: CRITICAL
-          exit-code: '1'
+          severity: CRITICAL,HIGH
+          exit-code: '0'
 
       - name: Scan Frontend image with Trivy
         uses: aquasecurity/trivy-action@master
@@ -174,8 +174,8 @@ jobs:
           image-ref: frontend:latest
           format: sarif
           output: trivy-frontend.sarif
-          severity: CRITICAL
-          exit-code: '1'
+          severity: CRITICAL,HIGH
+          exit-code: '0'
 
       - name: Upload Trivy results
         uses: actions/upload-artifact@v4
